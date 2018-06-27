@@ -4,8 +4,8 @@ import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
 import com.piotrglazar.pretium.api.{ItemSourceName, Routing}
-import com.piotrglazar.pretium.api.clients.XkomClient
-import com.piotrglazar.pretium.service.{OptimalPriceService, XkomPageParser, XkomService}
+import com.piotrglazar.pretium.api.clients.WebClient
+import com.piotrglazar.pretium.service._
 import com.typesafe.scalalogging.LazyLogging
 
 import scala.concurrent.ExecutionContextExecutor
@@ -17,9 +17,12 @@ object Pretium extends App with LazyLogging {
   private implicit val materializer: ActorMaterializer = ActorMaterializer()
   private implicit val dispatcher: ExecutionContextExecutor = system.dispatcher
 
-  private val xkomService = new XkomService(XkomClient(Config.clientConfigs(ItemSourceName.XKOM)), new XkomPageParser)
+  private val xkomService = new XkomService(WebClient(Config.clientConfigs(ItemSourceName.XKOM)), new XkomPageParser)
 
-  private val optimalPriceService: OptimalPriceService = new OptimalPriceService(List(xkomService))
+  private val komputronikService = new KomputronikService(WebClient(Config.clientConfigs(ItemSourceName.KOMPUTRONIK)),
+    new KomputronikPageParser)
+
+  private val optimalPriceService: OptimalPriceService = new OptimalPriceService(List(xkomService, komputronikService))
 
   private val routing: Routing = new Routing(optimalPriceService)
 

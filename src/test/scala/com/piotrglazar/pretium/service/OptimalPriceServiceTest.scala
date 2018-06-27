@@ -48,9 +48,30 @@ class OptimalPriceServiceTest extends FlatSpec with BeforeAndAfter with MockitoS
     val eventualPrice = service.findOptimalPrice(item)
 
     // then
-    Await.result(eventualPrice, 1 second) should have (
+    val itemPrice = Await.result(eventualPrice, 1 second)
+    itemPrice.name shouldEqual item.name
+    itemPrice.prices should have size 1
+    itemPrice.prices.head should have (
       'itemSourceName (XKOM),
       'price (BigDecimal(5))
     )
+  }
+
+  it should "pick two lowest prices" in {
+    // given
+    val item = Item(ItemName("cool gpu"), List(ItemSource("/path", XKOM), ItemSource("/path2", TEST)))
+    val xkomService = mock[ItemService]
+    given(xkomService.supports).willReturn(XKOM)
+    given(testService.findPrice(item.name, "/path2")).willReturn(Future.successful(BigDecimal(5)))
+    given(xkomService.findPrice(item.name, "/path")).willReturn(Future.successful(BigDecimal(5)))
+    service = new OptimalPriceService(List(testService, xkomService))
+
+    // when
+    val eventualPrice = service.findOptimalPrice(item)
+
+    // then
+    val itemPrice = Await.result(eventualPrice, 1 second)
+    itemPrice.prices should have size 2
+    itemPrice.prices.map(_.price).distinct shouldEqual List(BigDecimal(5))
   }
 }

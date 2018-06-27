@@ -3,6 +3,7 @@ package com.piotrglazar.pretium.api
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import akka.http.scaladsl.unmarshalling.PredefinedFromEntityUnmarshallers
+import com.piotrglazar.pretium.api.ItemSourceName.XKOM
 import com.piotrglazar.pretium.service.OptimalPriceService
 import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport
 import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
@@ -38,16 +39,16 @@ class RoutingTest extends FlatSpec with ScalatestRouteTest with Matchers with Mo
 
   it should "accept valid request" in {
     // given
-    val item = Item(ItemName("intel cpu"), List(ItemSource("/some-path", ItemSourceName.XKOM)))
+    val item = Item(ItemName("intel cpu"), List(ItemSource("/some-path", XKOM)))
     given(optimalPriceService.findOptimalPrice(item))
-      .willReturn(Future.successful(ItemPrice(item.name, ItemSourceName.XKOM, 20.00)))
+      .willReturn(Future.successful(ItemPrice(item.name, List(ItemSourcePrice(XKOM, 20.00)))))
 
     // when
     Post("/prices", item.asJson) ~> routing.route ~> check {
 
       // then
       status shouldEqual StatusCodes.OK
-      responseAs[ItemPrice].price shouldEqual BigDecimal("20.00")
+      responseAs[ItemPrice].prices.head.price shouldEqual BigDecimal("20.00")
     }
   }
 }

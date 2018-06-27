@@ -1,7 +1,7 @@
 package com.piotrglazar.pretium.service
 
 import com.piotrglazar.pretium.api.ItemName
-import com.piotrglazar.pretium.api.ItemSourceName.XKOM
+import com.piotrglazar.pretium.api.ItemSourceName.KOMPUTRONIK
 import com.piotrglazar.pretium.api.clients.WebClient
 import org.mockito.BDDMockito.given
 import org.scalatest.mockito.MockitoSugar
@@ -12,27 +12,27 @@ import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
 import scala.util.Success
 
-class XkomServiceTest extends FlatSpec with BeforeAndAfter with MockitoSugar with Matchers {
+class KomputronikServiceTest extends FlatSpec with Matchers with MockitoSugar with BeforeAndAfter {
 
   private val itemName = ItemName("cool cpu")
   private val url = "/cool-cpu"
 
-  private var service: XkomService = _
   private var client: WebClient = _
-  private var pageParser: XkomPageParser = _
+  private var service: KomputronikService = _
+  private var pageParser: KomputronikPageParser = _
 
   before {
     client = mock[WebClient]
-    pageParser = mock[XkomPageParser]
-    service = new XkomService(client, pageParser)
+    pageParser = mock[KomputronikPageParser]
+    service = new KomputronikService(client, pageParser)
   }
 
-  it should "support xkom" in {
+  it should "support komputronik" in {
     // when
     val supportedSource = service.supports
 
     // then
-    supportedSource shouldEqual XKOM
+    supportedSource shouldEqual KOMPUTRONIK
   }
 
   it should "find item price" in {

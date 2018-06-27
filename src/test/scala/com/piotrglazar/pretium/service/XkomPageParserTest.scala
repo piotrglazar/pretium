@@ -10,7 +10,7 @@ class XkomPageParserTest extends FlatSpec with Matchers {
 
   private val parser = new XkomPageParser
 
-  private lazy val page = Source.fromFile(Resources.getResource("intel-i7.html").toURI, Charsets.UTF_8.displayName()).mkString
+  private lazy val page = Source.fromFile(Resources.getResource("intel-i7-xkom.html").toURI, Charsets.UTF_8.displayName()).mkString
 
   it should "extract product price" in {
     // given 'page'
