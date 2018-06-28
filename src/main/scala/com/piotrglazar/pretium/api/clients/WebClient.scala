@@ -16,19 +16,19 @@ import javax.net.ssl.{KeyManager, SSLContext, X509TrustManager}
 
 import scala.concurrent.{ExecutionContextExecutor, Future}
 
-object XkomClient extends LazyLogging {
+object WebClient extends LazyLogging {
 
   def apply(config: ClientConfig)(implicit actorSystem: ActorSystem, materializer: ActorMaterializer,
-    executionContextExecutor: ExecutionContextExecutor): XkomClient =
+    executionContextExecutor: ExecutionContextExecutor): WebClient =
   {
     if (config.host == "localhost") {
       logger.info("Building trustful context for local connections")
       val noCertificateCheckContext = ConnectionContext.https(trustfulSslContext())
       val apiFlow = Http().outgoingConnectionHttps(config.host, config.port, noCertificateCheckContext)
-      new XkomClient(apiFlow)
+      new WebClient(apiFlow)
     } else {
       logger.info("Building secure context")
-      new XkomClient(Http().outgoingConnectionHttps(config.host, config.port))
+      new WebClient(Http().outgoingConnectionHttps(config.host, config.port))
     }
   }
 
@@ -46,8 +46,8 @@ object XkomClient extends LazyLogging {
   }
 }
 
-class XkomClient(private val apiFlow: Flow[HttpRequest, HttpResponse, Future[Http.OutgoingConnection]])
-                (implicit private val actorSystem: ActorSystem,
+class WebClient(private val apiFlow: Flow[HttpRequest, HttpResponse, Future[Http.OutgoingConnection]])
+               (implicit private val actorSystem: ActorSystem,
                  private val materializer: ActorMaterializer,
                  private val executionContextExecutor: ExecutionContextExecutor) extends LazyLogging {
 

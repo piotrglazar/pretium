@@ -17,7 +17,7 @@ import scala.concurrent.duration._
 import scala.concurrent.{Await, ExecutionContextExecutor}
 import scala.language.postfixOps
 
-class XkomClientTest extends FlatSpec with BeforeAndAfterAll with BeforeAndAfter with Matchers {
+class WebClientTest extends FlatSpec with BeforeAndAfterAll with BeforeAndAfter with Matchers {
 
   private val url = "/item"
 
@@ -29,11 +29,11 @@ class XkomClientTest extends FlatSpec with BeforeAndAfterAll with BeforeAndAfter
 
   private var server: StubServer = _
 
-  private var client: XkomClient = _
+  private var client: WebClient = _
 
   before {
     server = new StubServer().secured().run()
-    client = XkomClient(new ClientConfig {
+    client = WebClient(new ClientConfig {
       override def host: String = "localhost"
 
       override def port: Int = server.getPort

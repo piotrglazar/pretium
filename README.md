@@ -12,7 +12,11 @@ curl -X POST \
 		{
 			"sourceName": "XKOM",
 			"path": "/p/383508-procesor-intel-core-i7-intel-i7-8700k-370ghz-12mb.html"
-		}
+		},
+        {
+            "sourceName": "KOMPUTRONIK",
+            "path": "/product/421796/intel-core-i7-8700k.html"
+        }
 	]
 }'
 ```

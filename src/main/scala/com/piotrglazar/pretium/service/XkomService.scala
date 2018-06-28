@@ -2,11 +2,11 @@ package com.piotrglazar.pretium.service
 import com.piotrglazar.pretium.api
 import com.piotrglazar.pretium.api.ItemSourceName
 import com.piotrglazar.pretium.api.ItemSourceName.ItemSourceName
-import com.piotrglazar.pretium.api.clients.XkomClient
+import com.piotrglazar.pretium.api.clients.WebClient
 
 import scala.concurrent.{ExecutionContext, Future}
 
-class XkomService(private val client: XkomClient,
+class XkomService(private val client: WebClient,
                   private val xkomPageParser: XkomPageParser)
                  (implicit private val executionContext: ExecutionContext) extends ItemService {
 
