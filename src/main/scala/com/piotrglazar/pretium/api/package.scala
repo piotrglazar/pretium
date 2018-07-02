@@ -6,7 +6,7 @@ package object api {
 
   object ItemSourceName extends Enumeration {
     type ItemSourceName = Value
-    val XKOM, KOMPUTRONIK, TEST: Value = Value
+    val XKOM, KOMPUTRONIK, MORELE, TEST: Value = Value
   }
 
   case class ItemSource(path: String, sourceName: ItemSourceName)

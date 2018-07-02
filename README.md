@@ -16,6 +16,10 @@ curl -X POST \
         {
             "sourceName": "KOMPUTRONIK",
             "path": "/product/421796/intel-core-i7-8700k.html"
+        },
+        {
+            "sourceName": "MORELE",
+            "path": "/procesor-intel-core-i7-8700k-3-70ghz-12mb-box-bx80684i78700k-978219/"
         }
 	]
 }'
