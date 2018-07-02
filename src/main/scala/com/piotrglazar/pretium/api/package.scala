@@ -18,4 +18,12 @@ package object api {
   case class ItemSourcePrice(itemSourceName: ItemSourceName, price: BigDecimal)
 
   case class ItemPrice(name: ItemName, prices: List[ItemSourcePrice])
+
+  case class ItemQuantity(name: ItemName, quantity: Option[Int]) {
+    def getQuantity: Int = quantity.getOrElse(1)
+  }
+
+  case class ItemQuery(items: List[Item], task: List[ItemQuantity])
+
+  case class ItemQueryResponse(items: List[ItemPrice])
 }

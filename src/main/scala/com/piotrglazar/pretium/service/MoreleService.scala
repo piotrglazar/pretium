@@ -11,7 +11,7 @@ class MoreleService(private val client: WebClient,
                     private val morelePageParser: MorelePageParser)
                    (implicit private val executionContext: ExecutionContext) extends ItemService {
 
-  override def findPrice(itemName: api.ItemName, url: String): Future[BigDecimal] = {
+  override def findPrice(url: String): Future[BigDecimal] = {
     client.fetch(url)
       .map(morelePageParser.extractPrice)
       .map(_.get)
