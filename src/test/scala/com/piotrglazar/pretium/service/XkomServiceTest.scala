@@ -41,7 +41,7 @@ class XkomServiceTest extends FlatSpec with BeforeAndAfter with MockitoSugar wit
     given(pageParser.extractPrice("page content")).willReturn(Success(BigDecimal(20)))
 
     // when
-    val productPrice = service.findPrice(itemName, url)
+    val productPrice = service.findPrice(url)
 
     // then
     Await.result(productPrice, 1 second) shouldEqual BigDecimal(20)

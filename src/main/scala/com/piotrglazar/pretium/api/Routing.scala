@@ -25,11 +25,11 @@ class Routing(optimalPriceService: OptimalPriceService)(implicit private val mat
       } ~
       path("prices") {
         post {
-          entity(as[Item]) { entity =>
-            val result = optimalPriceService.findOptimalPrice(entity)
+          entity(as[ItemQuery]) { request =>
+            val result = optimalPriceService.findOptimalPrice(request.task, request.items)
             onComplete(result) {
-              case Success(itemPrice) =>
-                complete(itemPrice.asJson)
+              case Success(itemPrices) =>
+                complete(ItemQueryResponse(itemPrices).asJson)
               case Failure(t) =>
                 complete(t)
             }

@@ -10,7 +10,7 @@ class XkomService(private val client: WebClient,
                   private val xkomPageParser: XkomPageParser)
                  (implicit private val executionContext: ExecutionContext) extends ItemService {
 
-  override def findPrice(itemName: api.ItemName, url: String): Future[BigDecimal] = {
+  override def findPrice(url: String): Future[BigDecimal] = {
     client.fetch(url)
       .map(xkomPageParser.extractPrice)
       .map(_.get)

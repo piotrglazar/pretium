@@ -40,15 +40,16 @@ class RoutingTest extends FlatSpec with ScalatestRouteTest with Matchers with Mo
   it should "accept valid request" in {
     // given
     val item = Item(ItemName("intel cpu"), List(ItemSource("/some-path", XKOM)))
-    given(optimalPriceService.findOptimalPrice(item))
-      .willReturn(Future.successful(ItemPrice(item.name, List(ItemSourcePrice(XKOM, 20.00)))))
+    val query = ItemQuery(List(item), List(ItemQuantity(item.name, None)))
+    given(optimalPriceService.findOptimalPrice(query.task, query.items))
+      .willReturn(Future.successful(List(ItemPrice(item.name, List(ItemSourcePrice(XKOM, 20.00))))))
 
     // when
-    Post("/prices", item.asJson) ~> routing.route ~> check {
+    Post("/prices", query.asJson) ~> routing.route ~> check {
 
       // then
       status shouldEqual StatusCodes.OK
-      responseAs[ItemPrice].prices.head.price shouldEqual BigDecimal("20.00")
+      responseAs[ItemQueryResponse].items.head.prices.head.price shouldEqual BigDecimal("20.00")
     }
   }
 }

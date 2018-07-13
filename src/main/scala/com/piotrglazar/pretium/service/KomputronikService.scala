@@ -10,7 +10,7 @@ class KomputronikService(private val client: WebClient,
                           private val komputronikPageParser: KomputronikPageParser)
                         (implicit private val executionContext: ExecutionContext) extends ItemService {
 
-  override def findPrice(itemName: ItemName, url: String): Future[BigDecimal] = {
+  override def findPrice(url: String): Future[BigDecimal] = {
     client.fetch(url)
       .map(komputronikPageParser.extractPrice)
       .map(_.get)
