@@ -18,4 +18,3 @@ lazy val root = (project in file("."))
     organization := "com.piotrglazar",
     publishMavenStyle := true
   )
-

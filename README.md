@@ -42,7 +42,51 @@ curl -X POST \
 	    }
 
 	  ]
-	}
+	},
+	{
+	  "name": "samsung ssd",
+	  "sources": [
+        {
+          "sourceName": "XKOM",
+          "path": "/p/431142-dysk-ssd-samsung-500gb-970-evo-m2-2280-nvme.html"
+        },
+        {
+          "sourceName": "KOMPUTRONIK",
+          "path": "/product/488109/samsung-970-evo-m-2-500gb.html"
+        }
+      ]
+	},
+	{
+      "name": "ram gskill",
+      "sources": [
+        {
+          "sourceName": "XKOM",
+          "path": "/p/266766-pamiec-ram-ddr4-gskill-32gb-3000mhz-ripjaws-v-red-cl15-2x16gb.html"
+        }
+      ]
+    },
+    {
+      "name": "ram kingston",
+      "sources": [
+        {
+          "sourceName": "KOMPUTRONIK",
+          "path": "/product/323141/hyperx-predator-xmp-64gb-4x16gb-3000mhz-ddr4-cl15-dimm-.html"
+        }
+      ]
+    },
+    {
+      "name": "motherboard",
+      "sources": [
+        {
+          "sourceName": "XKOM",
+          "path": "/p/387339-plyta-glowna-socket-1151-asus-rog-maximus-x-hero-wi-fi-ac.html"
+        },
+        {
+          "sourceName": "KOMPUTRONIK",
+          "path": "/product/433281/asus-rog-maximus-x-hero-wifi-ac.html"
+        }
+      ]
+    }
   ],
   "task": [
     {
@@ -50,6 +94,23 @@ curl -X POST \
     },
     {
       "name": "intel i7 cpu"
+    },
+    {
+      "name": "samsung ssd"
+    },
+    {
+      "items": [
+        {
+          "name": "ram gskill",
+          "quantity": 2
+        },
+        {
+          "name": "ram kingston"
+        }
+      ]
+    },
+    {
+      "name": "motherboard"
     }
   ]
 }'

@@ -12,6 +12,8 @@ class KomputronikPageParserTest extends FlatSpec with Matchers {
 
   private lazy val page = Source.fromFile(Resources.getResource("intel-i7-komputronik.html").toURI, Charsets.UTF_8.displayName()).mkString
 
+  private lazy val gpuPage = Source.fromFile(Resources.getResource("nvidia-1080ti-komputronik.html").toURI, Charsets.UTF_8.displayName()).mkString
+
   it should "extract price" in {
     // given 'page'
 
@@ -21,5 +23,16 @@ class KomputronikPageParserTest extends FlatSpec with Matchers {
     // then
     result should be a 'success
     result.get shouldEqual BigDecimal("1574.90")
+  }
+
+  it should "extract gpu price and not take 'other products' into consideration" in {
+    // given 'gpuPage'
+
+    // when
+    val result = parser.extractPrice(gpuPage)
+
+    // then
+    result should be a 'success
+    result.get shouldEqual BigDecimal("4269.90")
   }
 }
