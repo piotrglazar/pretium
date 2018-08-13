@@ -1,11 +1,11 @@
 package com.piotrglazar.pretium.service
 
 import com.piotrglazar.pretium.utils.StringUtils.StringOps
-
 import com.typesafe.scalalogging.LazyLogging
-import org.htmlcleaner.HtmlCleaner
+import org.htmlcleaner.{HtmlCleaner, TagNode}
 
 import scala.collection.JavaConverters._
+import scala.collection.mutable
 import scala.util.{Failure, Success, Try}
 
 class KomputronikPageParser extends LazyLogging {
@@ -14,7 +14,8 @@ class KomputronikPageParser extends LazyLogging {
     val cleaner = new HtmlCleaner()
     val page = cleaner.clean(rawPage)
 
-    val node = page.getElementListByAttValue("class", "proper", true, false).asScala
+    val pricesContainer = page.getElementListByAttValue("class", "prices", true, false).asScala.toList
+    val node: List[TagNode] = pricesContainer.flatMap(c => c.getElementListByAttValue("class", "proper", true, false).asScala.toList)
 
     val prices = for {
       n <- node

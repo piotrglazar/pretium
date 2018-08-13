@@ -25,9 +25,9 @@ object Pretium extends App with LazyLogging {
   private val moreleService = new MoreleService(WebClient(Config.clientConfigs(ItemSourceName.MORELE)),
     new MorelePageParser)
 
-  private val optimalPriceService: OptimalPriceService = new OptimalPriceService(
-    List(xkomService, komputronikService, moreleService)
-  )
+  private val priceFetchService = new PriceFetchService(List(xkomService, komputronikService, moreleService))
+
+  private val optimalPriceService: OptimalPriceService = new OptimalPriceService(priceFetchService)
 
   private val routing: Routing = new Routing(optimalPriceService)
 

@@ -29,7 +29,7 @@ class Routing(optimalPriceService: OptimalPriceService)(implicit private val mat
             val result = optimalPriceService.findOptimalPrice(request.task, request.items)
             onComplete(result) {
               case Success(itemPrices) =>
-                complete(ItemQueryResponse(itemPrices).asJson)
+                complete(ItemQueryResponse(itemPrices.items, itemPrices.total).asJson)
               case Failure(t) =>
                 complete(t)
             }

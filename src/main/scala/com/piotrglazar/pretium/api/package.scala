@@ -17,13 +17,24 @@ package object api {
 
   case class ItemSourcePrice(itemSourceName: ItemSourceName, price: BigDecimal)
 
-  case class ItemPrice(name: ItemName, prices: List[ItemSourcePrice])
+  case class ItemPrice(name: ItemName, prices: List[ItemSourcePrice], quantity: Int)
 
-  case class ItemQuantity(name: ItemName, quantity: Option[Int]) {
-    def getQuantity: Int = quantity.getOrElse(1)
+  case class OptimalPrices(items: List[ItemPrice], total: BigDecimal)
+
+  sealed trait Task {
+    def items: List[ItemQuantity]
   }
 
-  case class ItemQuery(items: List[Item], task: List[ItemQuantity])
+  case class Replacement(items: List[ItemQuantity]) extends Task
 
-  case class ItemQueryResponse(items: List[ItemPrice])
+  case class ItemQuantity(name: ItemName, quantity: Option[Int]) extends Task {
+    def getQuantity: Int = quantity.getOrElse(1)
+
+    override def items: List[ItemQuantity] = List(this)
+  }
+
+  case class ItemQuery(items: List[Item], task: List[Task])
+
+  // TODO, yes a duplicate of OptimalPrices
+  case class ItemQueryResponse(items: List[ItemPrice], total: BigDecimal)
 }
