@@ -125,6 +125,23 @@ curl -X POST \
           "path": "/product/307630/thermal-grizzly-pasta-termoprzewodzaca-conductonaut-1-g-0-16-ml-plynny-metal.html"
         }
       ]
+    },
+    {
+      "name": "cpu cooling",
+      "sources": [
+        {
+          "sourceName": "XKOM",
+          "path": "/p/379937-chlodzenie-wodne-nzxt-kraken-x62-v2.html"
+        },
+        {
+          "sourceName": "KOMPUTRONIK",
+          "path": "/product/406220/nzxt-kraken-x62-v2-280mm-chlodzenie-wodne.html"
+        },
+        {
+          "sourceName": "MORELE",
+          "path": "/chlodzenie-wodne-nzxt-kraken-x62-v-2-rl-krx62-02-977446/"
+        }
+      ]
     }
   ],
   "task": [
@@ -159,6 +176,9 @@ curl -X POST \
     },
     {
       "name": "liquid metal"
+    },
+    {
+      "name": "cpu cooling"
     }
   ]
 }'
