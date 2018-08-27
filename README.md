@@ -86,6 +86,23 @@ curl -X POST \
           "path": "/product/433281/asus-rog-maximus-x-hero-wifi-ac.html"
         }
       ]
+    },
+    {
+      "name": "wd hdd",
+      "sources": [
+        {
+          "sourceName": "XKOM",
+          "path": "/p/156834-dysk-hdd-wd-4tb-intellipower-64mb-red.html"
+        },
+        {
+          "sourceName": "KOMPUTRONIK",
+          "path": "/product/199732/wd-red-4tb.html"
+        },
+        {
+          "sourceName": "MORELE",
+          "path": "/dysk-western-digital-red-3-5-4tb-sata-600-64mb-cache-wd40efrx-606541/"
+        }
+      ]
     }
   ],
   "task": [
@@ -111,6 +128,9 @@ curl -X POST \
     },
     {
       "name": "motherboard"
+    },
+    {
+      "name": "wd hdd"
     }
   ]
 }'
