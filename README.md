@@ -142,6 +142,19 @@ curl -X POST \
           "path": "/chlodzenie-wodne-nzxt-kraken-x62-v-2-rl-krx62-02-977446/"
         }
       ]
+    },
+    {
+      "name": "case",
+      "sources": [
+        {
+          "sourceName": "KOMPUTRONIK",
+          "path": "/product/204972/nzxt-phantom-530-biala.html"
+        },
+        {
+          "sourceName": "MORELE",
+          "path": "/obudowa-nzxt-phantom-530-ca-ph530-w1-610359/"
+        }
+      ]
     }
   ],
   "task": [
@@ -179,6 +192,9 @@ curl -X POST \
     },
     {
       "name": "cpu cooling"
+    },
+    {
+      "name": "case"
     }
   ]
 }'
