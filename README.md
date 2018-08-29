@@ -26,19 +26,19 @@ curl -X POST \
       ]
 	},
 	{
-	  "name": "nvidia 1080 ti",
+	  "name": "nvidia 2080",
 	  "sources": [
 	    {
 	      "sourceName": "XKOM",
-	      "path": "/p/400031-karta-graficzna-nvidia-evga-geforce-gtx-1080-ti-sc-black-edition-11gb-gddr5x.html"
+	      "path": "/p/445397-karta-graficzna-nvidia-asus-geforce-rtx-2080-dual-oc-8gb-gddr6.html"
 	    },
 	    {
 	      "sourceName": "KOMPUTRONIK",
-	      "path": "/product/386831/evga-geforce-gtx-1080-ti-sc-black-edition-gaming-11gb.html"
+	      "path": "/product/533454/asus-geforce-rtx-2080-dual-oc-8gb.html"
 	    },
 	    {
 	      "sourceName": "MORELE",
-	      "path": "/karta-graficzna-evga-geforce-gtx-1080-ti-sc2-gaming-11gb-gddr5x-352-bit-dvi-hdmi-3x-dp-11g-p4-6593-kr-1235745/"
+	      "path": "/karta-graficzna-msi-geforce-rtx-2080-gaming-x-trio-oc-rtx-2080-gaming-x-trio-oc-4141833/"
 	    }
 
 	  ]
@@ -86,11 +86,80 @@ curl -X POST \
           "path": "/product/433281/asus-rog-maximus-x-hero-wifi-ac.html"
         }
       ]
+    },
+    {
+      "name": "wd hdd",
+      "sources": [
+        {
+          "sourceName": "XKOM",
+          "path": "/p/156834-dysk-hdd-wd-4tb-intellipower-64mb-red.html"
+        },
+        {
+          "sourceName": "KOMPUTRONIK",
+          "path": "/product/199732/wd-red-4tb.html"
+        },
+        {
+          "sourceName": "MORELE",
+          "path": "/dysk-western-digital-red-3-5-4tb-sata-600-64mb-cache-wd40efrx-606541/"
+        }
+      ]
+    },
+    {
+      "name": "power supply",
+      "sources": [
+        {
+          "sourceName": "MORELE",
+          "path": "/zasilacz-evga-supernova-g3-650w-220-g3-0650-y1-1103093/"
+        }
+      ]
+    },
+    {
+      "name": "liquid metal",
+      "sources": [
+        {
+          "sourceName": "XKOM",
+          "path": "/p/396352-pasta-termoprzewodzaca-thermal-grizzly-liquid-metal-1g.html"
+        },
+        {
+          "sourceName": "KOMPUTRONIK",
+          "path": "/product/307630/thermal-grizzly-pasta-termoprzewodzaca-conductonaut-1-g-0-16-ml-plynny-metal.html"
+        }
+      ]
+    },
+    {
+      "name": "cpu cooling",
+      "sources": [
+        {
+          "sourceName": "XKOM",
+          "path": "/p/379937-chlodzenie-wodne-nzxt-kraken-x62-v2.html"
+        },
+        {
+          "sourceName": "KOMPUTRONIK",
+          "path": "/product/406220/nzxt-kraken-x62-v2-280mm-chlodzenie-wodne.html"
+        },
+        {
+          "sourceName": "MORELE",
+          "path": "/chlodzenie-wodne-nzxt-kraken-x62-v-2-rl-krx62-02-977446/"
+        }
+      ]
+    },
+    {
+      "name": "case",
+      "sources": [
+        {
+          "sourceName": "KOMPUTRONIK",
+          "path": "/product/204972/nzxt-phantom-530-biala.html"
+        },
+        {
+          "sourceName": "MORELE",
+          "path": "/obudowa-nzxt-phantom-530-ca-ph530-w1-610359/"
+        }
+      ]
     }
   ],
   "task": [
     {
-      "name": "nvidia 1080 ti"
+      "name": "nvidia 2080"
     },
     {
       "name": "intel i7 cpu"
@@ -111,6 +180,21 @@ curl -X POST \
     },
     {
       "name": "motherboard"
+    },
+    {
+      "name": "wd hdd"
+    },
+    {
+      "name": "power supply"
+    },
+    {
+      "name": "liquid metal"
+    },
+    {
+      "name": "cpu cooling"
+    },
+    {
+      "name": "case"
     }
   ]
 }'
