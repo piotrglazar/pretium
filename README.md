@@ -13,15 +13,11 @@ curl -X POST \
       "sources": [
         {
           "sourceName": "XKOM",
-          "path": "/p/383508-procesor-intel-core-i7-intel-i7-8700k-370ghz-12mb.html"
+          "path": "/p/455833-procesor-intel-core-i7-intel-i7-9700k-36-ghz-12mb-box.html"
         },
         {
           "sourceName": "KOMPUTRONIK",
-          "path": "/product/421796/intel-core-i7-8700k.html"
-        },
-        {
-          "sourceName": "MORELE",
-          "path": "/procesor-intel-core-i7-8700k-3-70ghz-12mb-box-bx80684i78700k-978219/"
+          "path": "/product/555039/intel-core-i7-9700k.html"
         }
       ]
 	},
@@ -56,6 +52,19 @@ curl -X POST \
         }
       ]
 	},
+    {
+      "name": "samsung ssd 1tb",
+      "sources": [
+        {
+          "sourceName": "XKOM",
+          "path": "/p/431147-dysk-ssd-samsung-1tb-970-evo-m2-2280-nvme.html"
+        },
+        {
+          "sourceName": "KOMPUTRONIK",
+          "path": "/product/491280/samsung-970-evo-m-2-1tb.html"
+        }
+      ]
+    },
 	{
       "name": "ram gskill",
       "sources": [
@@ -79,11 +88,11 @@ curl -X POST \
       "sources": [
         {
           "sourceName": "XKOM",
-          "path": "/p/387339-plyta-glowna-socket-1151-asus-rog-maximus-x-hero-wi-fi-ac.html"
+          "path": "/p/454851-plyta-glowna-socket-1151-asus-rog-maximus-xi-hero-wi-fi.html"
         },
         {
           "sourceName": "KOMPUTRONIK",
-          "path": "/product/433281/asus-rog-maximus-x-hero-wifi-ac.html"
+          "path": "/product/554205/asus-rog-maximus-xi-hero-wi-fi-.html"
         }
       ]
     },
@@ -165,7 +174,7 @@ curl -X POST \
       "name": "intel i7 cpu"
     },
     {
-      "name": "samsung ssd"
+      "name": "samsung ssd 1tb"
     },
     {
       "items": [
