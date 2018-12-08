@@ -118,7 +118,7 @@ curl -X POST \
       "sources": [
         {
           "sourceName": "MORELE",
-          "path": "/zasilacz-evga-supernova-g3-650w-220-g3-0650-y1-1103093/"
+          "path": "/zasilacz-evga-supernova-g3-750w-220-g3-0750-x1-1103094/"
         }
       ]
     },
